@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <div class="p-5">
+        <h1 class="p-3 text-3xl">Add a text:</h1>
+        <form action="/create" method="post">
+            <div class="p-3">
+                <label>Art:</label>
+                <select class="border-2 border-gray-500 rounded form-select" name="art">
+                    <option selected value="">Select an Art</option>
+                    <option value="Mountain">Mountain</option>
+                    <option value="Medicine">Medicine</option>
+                    <option value="Divination">Divination</option>
+                    <option value="Physical Inspection">Physical Inspection</option>
+                    <option value="Destiny">Destiny</option>
+                </select>
+            </div>
+            
+            <div class="p-3">
+                <label class="py-5">Subtype:</label>
+                <input class="border-2 border-gray-500 rounded" type="text" name="subtype">
+            </div>
+            
+            <div class="p-3">
+                <label>Title:</label>
+                <input class="border-2 border-gray-500 rounded" name="title">
+            </div>
+
+            <div class="p-3">
+                <label>Link:</label>
+                <input class="border-2 border-gray-500 rounded" name="link">
+            </div>
+            <button class="block bg-blue-500 p-3 text-white rounded" type="submit">Submit</button>
+        </form>
+    </div>
+    
+
+{% endblock %}

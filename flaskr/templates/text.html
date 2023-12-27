@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="grid grid-cols-2">
+        <div class="p-5">
+            <h1 class="text-3xl">Title: {{ text['title'] }}</h1>
+            <p class="text-xl py-3">ID: {{ text['id'] }}</p>
+            <p class="text-xl py-3">Art: {{ text['art'] }}</p>
+            <p class="text-xl py-3">Subtype: {{ text['subtype'] }}</p>
+            <p class="text-xl py-3">Link: {{ text['link'] }}</p>
+            <p class="text-xl py-3">Created at: {{ text['created'] }}</p>
+            
+
+            <form action="/text/{{ text['id'] }}/delete" method="post">
+                <button class="block bg-red-500 text-white text-xl px-3 py-2 rounded" type="submit">Delete</button>
+            </form>
+        </div>
+        <div class="p-5">
+            <form action="/text/{{ text['id'] }}/update" method="post">
+                <label class="text-3xl">Title:</label>
+                <input class="border-2 border-gray-500 rounded form-select text text-3xl" name="title" value="{{ text['title'] }}">
+                <div class="py-3">
+                    <label class="text-xl">Art:</label>
+                    <select class="border-2 border-gray-500 rounded form-select text-xl" name="art">
+                    <option selected value="">Select an Art</option>
+                        {% if text['art'] == 'Mountain' %}
+                            <option value="Mountain" selected>Mountain</option>
+                        {% else %}
+                            <option value="Mountain">Mountain</option>
+                        {% endif %}
+                        {% if text['art'] == 'Medicine' %}
+                            <option value="Medicine" selected>Medicine</option>
+                        {% else %}
+                            <option value="Medicine">Medicine</option>
+                        {% endif %}
+                        {% if text['art'] == 'Divination' %}
+                            <option value="Divination" selected>Divination</option>
+                        {% else %}
+                            <option value="Divination">Divination</option>
+                        {% endif %}
+                        {% if text['art'] == 'Physical Inspection' %}
+                            <option value="Physical Inspection" selected>Physical Inspection</option>
+                        {% else %}
+                            <option value="Physical Inspection">Physical Inspection</option>
+                        {% endif %}
+                        {% if text['art'] == 'Destiny' %}
+                            <option value="Destiny" selected>Destiny</option>
+                        {% else %}
+                            <option value="Destiny">Destiny</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="py-3">
+                    <label class="text-xl">Subtype:</label>
+                    <input class="border-2 border-gray-500 rounded text text-xl" name="subtype" value="{{ text['subtype'] }}">
+                </div>
+                <div class="py-3">
+                    <label class="text-xl">Link:</label>
+                    <input class="border-2 border-gray-500 rounded text text-xl" name="link" value="{{ text['link'] }}">
+                </div>
+                <button class="block bg-blue-500 text-white rounded py-2 px-3" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
